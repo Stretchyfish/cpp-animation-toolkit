@@ -1,0 +1,3 @@
+[submodule "cpp-animation-engine/vendor/raylib"]
+	path = cpp-animation-engine/vendor/raylib
+	url = https://github.com/raysan5/raylib.git
