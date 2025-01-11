@@ -21,24 +21,30 @@ void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedTextObje
 
 void anim::AnimationEngine::start_animation()
 {
-    InitWindow(this->screen_width, this->screen_height, this->title.c_str());
-    SetTargetFPS(60);
+    rl::InitWindow(this->screen_width, this->screen_height, this->title.c_str());
+    rl::SetTargetFPS(60);
 
-    while (!WindowShouldClose())
+    while (!rl::WindowShouldClose())
     {
-        BeginDrawing();
+        float delta_time = rl::GetFrameTime();
+        this->time += delta_time;
 
-        ClearBackground(BLACK);
+        rl::BeginDrawing();
+
+        rl::ClearBackground(rl::BLACK);
 
         for (AnimatedTextObject& text_object : this->animated_text_objects)
         {
-            DrawText(text_object.text.c_str(), text_object.position_x, text_object.position_y, 20, WHITE);            
+            text_object.draw_object(this->time);
+
         }
 
-        DrawText("Animation window", 190, 200, 20, WHITE);
-        
-        EndDrawing();
+        rl::DrawText("Animation window", 190, 200, 20, rl::WHITE);
+
+        rl::DrawText(std::to_string(time).c_str(), 20, 20, 20, rl::WHITE);
+
+        rl::EndDrawing();
     }
 
-    CloseWindow();
+    rl::CloseWindow();
 }

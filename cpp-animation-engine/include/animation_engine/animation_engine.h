@@ -7,7 +7,10 @@
 #include "animation_engine/animation_object.h"
 #include "animated_text_object.h"
 
-#include <raylib.h>
+namespace rl
+{
+    #include <raylib.h>
+}
 
 namespace anim
 {
@@ -26,6 +29,9 @@ namespace anim
             int screen_height;
 
         private:
+
+            float time;
+
             std::vector<AnimatedTextObject> animated_text_objects;
     };
 }

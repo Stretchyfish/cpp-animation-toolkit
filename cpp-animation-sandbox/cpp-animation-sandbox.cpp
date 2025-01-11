@@ -6,8 +6,11 @@ int main()
 {
     anim::AnimationEngine animation_engine("Simple animation", 800, 800);
     anim::AnimatedTextObject text1("text", 400, 400);
+    text1.start_time = 5;
+    text1.stop_time = 10;
 
     animation_engine.add_object_to_animation(text1);
+    
 
     //animation_engine.animation_objects.push_back(&text1);
 
