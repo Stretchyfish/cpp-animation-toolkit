@@ -25,5 +25,7 @@ namespace anim
         std::optional<float> duration;
         float position_new_x;
         float position_new_y;
+        float position_x_at_start_of_action;
+        float position_y_at_start_of_action;
     };
 };

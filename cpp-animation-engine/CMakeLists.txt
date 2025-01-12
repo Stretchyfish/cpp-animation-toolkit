@@ -4,17 +4,20 @@ project(cpp-animation-engine VERSION 0.1.0 LANGUAGES C CXX)
 add_subdirectory(vendor/raylib)
 
 include_directories(include/math)
+include_directories(include/actions)
 
 set(engine_header_files
     include/animation_engine/animation_engine.h
-    include/animation_engine/animation_object.h
-    include/animation_engine/animated_text_object.h
+    include/animation_engine/objects/animation_object.h
+    include/animation_engine/objects/animated_text_object.h
+    include/animation_engine/animations/animation_movement.h
 )
 
 set(engine_source_files
     src/animation_engine.cpp
     src/animation_object.cpp
     src/animated_text_object.cpp
+    src/animations/animation_movement_position.cpp
 )
 
 

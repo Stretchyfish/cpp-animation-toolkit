@@ -4,8 +4,8 @@
 #include <vector>
 #include <memory>
 #include <utility>
-#include "animation_engine/animation_object.h"
-#include "animated_text_object.h"
+#include "animation_engine/objects/animation_object.h"
+#include "objects/animated_text_object.h"
 
 namespace rl
 {

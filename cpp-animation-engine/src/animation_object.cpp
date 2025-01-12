@@ -1,4 +1,4 @@
-#include "animation_engine/animation_object.h"
+#include "animation_engine/objects/animation_object.h"
 
 anim::AnimationObject::AnimationObject()
 {

@@ -3,7 +3,8 @@
 #include "animation_object.h"
 #include <string>
 #include <optional>
-#include "math/lerp.hpp"
+#include "animation_engine/math/lerp.hpp"
+#include "animation_engine/animations/animation_movement.h"
 
 namespace rl
 {
@@ -22,7 +23,7 @@ namespace anim
             void update_position_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position);
             void move_position_linearly_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration);
 
-            std::string text; // @TODO, should this be a private variable, accessed with a public function?
+            std::string text;
 
         private:
 

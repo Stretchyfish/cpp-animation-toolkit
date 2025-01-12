@@ -1,4 +1,4 @@
-#include "animation_engine/animated_text_object.h"
+#include "animation_engine/objects/animated_text_object.h"
 
 anim::AnimatedTextObject::AnimatedTextObject() : AnimationObject()
 {
@@ -37,13 +37,14 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
         return;
     }
 
-    AnimationAction upcoming_action = this->animation_actions.front();
+    AnimationAction& upcoming_action = this->animation_actions.front();
 
     if (upcoming_action.execution_time > current_time)
     {
         return;
     }
-
+    
+    animation::AnimationResponse reponse;
     switch(upcoming_action.type)
     {
         case AnimationActionType::InstantPositionMovement:
@@ -52,42 +53,38 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
             this->position_y = upcoming_action.position_new_y;
             this->animation_actions.pop();
 
-            break;
+            return;
 
         case AnimationActionType::LinearPositionMovement:
-        {
-
-            if (upcoming_action.state == AnimationActionState::Inactive)
-            {
-                this->position_before_an_action_x = this->position_x;
-                this->position_before_an_action_y = this->position_y;
-                upcoming_action.state = AnimationActionState::Executing;
-            }
-
-            float t_start = upcoming_action.execution_time;
-            float t_stop = upcoming_action.execution_time + upcoming_action.duration.value(); // @TODO, this can fail, but shouldn't
-
-            float t = (current_time - t_start) / (t_stop - t_start);
-
-            float p1x = this->position_before_an_action_x;
-            float p2x = upcoming_action.position_new_x;
-
-            float p1y = this->position_before_an_action_y;
-            float p2y = upcoming_action.position_new_y;
-
-
-            float interpolated_position_x = math::lerp(p1x, p2x, t);
-            float interpolated_position_y = math::lerp(p1y, p2y, t);
-
-            this->position_x = interpolated_position_x;
-            this->position_y = interpolated_position_y;
-
-            if (t >= 1)
-            {
-                this->animation_actions.pop();
-            }
-        }            
+            reponse = animation::linear_position_movement(upcoming_action, current_time, this->position_x, this->position_y);
             break;
+
+        default:
+            std::cerr << "An action was executed that isn't defined, removing it from the queue \n";
+            this->animation_actions.pop();
+            return;
+    }
+
+
+    switch(reponse.state)
+    {
+        case animation::AnimationState::Invalid:
+        {
+            std::cerr << "An action was played that is not setup correctly, removing it from the queue \n";
+            this->animation_actions.pop();
+            return;
+        }
+
+        case animation::AnimationState::OnGoing:
+            this->position_x = reponse.position_x;
+            this->position_y = reponse.position_y;
+            return;
+
+        case animation::AnimationState::Finished:
+            this->position_x = reponse.position_x;
+            this->position_y = reponse.position_y;
+            this->animation_actions.pop();
+            return;
 
         default:
             break;
