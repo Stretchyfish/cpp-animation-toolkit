@@ -11,8 +11,15 @@ namespace anim
         LinearPositionMovement
     };
 
+    enum AnimationActionState
+    {
+        Inactive,
+        Executing
+    };
+
     struct AnimationAction
     {
+        AnimationActionState state;
         AnimationActionType type;
         float execution_time;
         std::optional<float> duration;

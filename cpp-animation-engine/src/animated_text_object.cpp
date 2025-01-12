@@ -55,19 +55,43 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
             break;
 
         case AnimationActionType::LinearPositionMovement:
+        {
 
-            
+            if (upcoming_action.state == AnimationActionState::Inactive)
+            {
+                this->position_before_an_action_x = this->position_x;
+                this->position_before_an_action_y = this->position_y;
+                upcoming_action.state = AnimationActionState::Executing;
+            }
 
-            
+            float t_start = upcoming_action.execution_time;
+            float t_stop = upcoming_action.execution_time + upcoming_action.duration.value(); // @TODO, this can fail, but shouldn't
+
+            float t = (current_time - t_start) / (t_stop - t_start);
+
+            float p1x = this->position_before_an_action_x;
+            float p2x = upcoming_action.position_new_x;
+
+            float p1y = this->position_before_an_action_y;
+            float p2y = upcoming_action.position_new_y;
+
+
+            float interpolated_position_x = math::lerp(p1x, p2x, t);
+            float interpolated_position_y = math::lerp(p1y, p2y, t);
+
+            this->position_x = interpolated_position_x;
+            this->position_y = interpolated_position_y;
+
+            if (t >= 1)
+            {
+                this->animation_actions.pop();
+            }
+        }            
             break;
 
         default:
             break;
     }
-
-
-    std::cout << "Action should be triggered now" << std::endl;
-
 }
 
 void anim::AnimatedTextObject::update_position_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position)
@@ -82,6 +106,7 @@ void anim::AnimatedTextObject::update_position_after(const float& new_position_x
     }
 
     AnimationAction new_action;
+    new_action.state = AnimationActionState::Inactive;
     new_action.type = AnimationActionType::InstantPositionMovement;
     new_action.execution_time = this->start_time + time_to_update_position;
     new_action.duration = std::nullopt;
@@ -103,6 +128,7 @@ void anim::AnimatedTextObject::move_position_linearly_after(const float& new_pos
     }
 
     AnimationAction new_action;
+    new_action.state = AnimationActionState::Inactive;
     new_action.type = AnimationActionType::LinearPositionMovement;
     new_action.execution_time = this->start_time + time_to_update_position;
     new_action.duration = duration;

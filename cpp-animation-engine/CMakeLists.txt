@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5.0)
 project(cpp-animation-engine VERSION 0.1.0 LANGUAGES C CXX)
 
 add_subdirectory(vendor/raylib)
-#include_directories(include)
+
+include_directories(include/math)
 
 set(engine_header_files
     include/animation_engine/animation_engine.h

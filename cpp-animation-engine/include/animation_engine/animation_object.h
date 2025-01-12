@@ -22,9 +22,13 @@ namespace anim
             float start_time;
             std::optional<float> stop_time;
 
-            int position_x;
-            int position_y;
-            int position_z;
+            float position_x;
+            float position_y;
+            float position_z;
+
+            float position_before_an_action_x;
+            float position_before_an_action_y;
+
 
         protected:
             virtual void draw_animation_actions(const float& current_time);

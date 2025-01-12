@@ -3,6 +3,7 @@
 #include "animation_object.h"
 #include <string>
 #include <optional>
+#include "math/lerp.hpp"
 
 namespace rl
 {
