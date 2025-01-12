@@ -30,5 +30,11 @@ void anim::AnimationObject::set_stop_time(const float& new_stop_time)
 
 void anim::AnimationObject::draw_object(const float& current_time)
 {
-    std::cerr << "Drawing was not defined for the object that is being drawn" << std::endl;
+    std::cerr << "Drawing was not defined for the object that is being drawn \n";
 }
+
+void anim::AnimationObject::draw_animation_actions(const float& current_time)
+{
+    std::cerr << "Triger animation action was not defined for the object it is being called in \n";
+}
+

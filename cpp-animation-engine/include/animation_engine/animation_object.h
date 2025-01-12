@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <optional>
+#include <vector>
+#include "animation_action.h"
+#include <queue>
 
 namespace anim
 {
@@ -22,6 +25,10 @@ namespace anim
             int position_x;
             int position_y;
             int position_z;
+
+        protected:
+            virtual void draw_animation_actions(const float& current_time);
+            std::queue<AnimationAction> animation_actions;
 
         private:
 

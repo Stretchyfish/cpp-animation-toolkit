@@ -6,13 +6,13 @@ int main()
 {
     anim::AnimationEngine animation_engine("Simple animation", 800, 800);
     anim::AnimatedTextObject text1("text", 400, 400);
-    text1.start_time = 5;
-    text1.stop_time = 10;
+    text1.start_time = 2;
+    text1.stop_time = 12;
+
+    text1.update_position_after(700, 700, 2);
+    text1.move_position_linearly_after(400, 400, 4, 2);
 
     animation_engine.add_object_to_animation(text1);
     
-
-    //animation_engine.animation_objects.push_back(&text1);
-
     animation_engine.start_animation();
 }
