@@ -24,6 +24,21 @@ void anim::AnimationEngine::start_animation()
     rl::InitWindow(this->screen_width, this->screen_height, this->title.c_str());
     rl::SetTargetFPS(60);
 
+    std::string font_path = "Roboto_Condensed-Medium.ttf";
+
+    rl::Font font = rl::LoadFont(font_path.c_str());
+
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("Current working directory: %s\n", cwd);
+    } else {
+        perror("getcwd() error");
+    }
+
+    if (font.texture.id == 0) {
+        printf("Failed to load font from: %s%s\n", cwd, font_path);
+    }
+
     while (!rl::WindowShouldClose())
     {
         float delta_time = rl::GetFrameTime();

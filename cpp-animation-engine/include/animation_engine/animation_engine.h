@@ -6,6 +6,7 @@
 #include <utility>
 #include "animation_engine/objects/animation_object.h"
 #include "objects/animated_text_object.h"
+#include <unistd.h>
 
 namespace rl
 {

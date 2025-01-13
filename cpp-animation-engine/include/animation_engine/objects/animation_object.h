@@ -26,6 +26,7 @@ namespace anim
             float position_x;
             float position_y;
             float position_z;
+            float size;
 
             float position_before_an_action_x;
             float position_before_an_action_y;

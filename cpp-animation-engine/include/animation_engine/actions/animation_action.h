@@ -8,7 +8,9 @@ namespace anim
     enum AnimationActionType
     {
         InstantPositionMovement,
-        LinearPositionMovement
+        LinearPositionMovement,
+        SizeChange,
+        LinearSizeChange,
     };
 
     enum AnimationActionState
@@ -25,7 +27,9 @@ namespace anim
         std::optional<float> duration;
         float position_new_x;
         float position_new_y;
+        float size_new;
         float position_x_at_start_of_action;
         float position_y_at_start_of_action;
+        float size_at_start_of_action;
     };
 };

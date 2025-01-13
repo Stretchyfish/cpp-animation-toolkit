@@ -27,7 +27,7 @@ void anim::AnimatedTextObject::draw_object(const float& current_time)
 
     this->draw_animation_actions(current_time);
 
-    rl::DrawText(this->text.c_str(), this->position_x, this->position_y, 20, rl::WHITE);
+    rl::DrawText(this->text.c_str(), this->position_x, this->position_y, this->size, rl::WHITE);
 }
 
 void anim::AnimatedTextObject::draw_animation_actions(const float& current_time) // @TODO, consider a better name than trigger
@@ -59,6 +59,17 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
             reponse = animation::linear_position_movement(upcoming_action, current_time, this->position_x, this->position_y);
             break;
 
+        case AnimationActionType::SizeChange:
+
+            this->size = upcoming_action.size_new;
+            this->animation_actions.pop();
+            //reponse = animation::size_change(upcoming_action, current_time, 5);
+            return;
+
+        case AnimationActionType::LinearSizeChange:
+            reponse = animation::linear_size_change(upcoming_action, current_time, this->size);
+            break;
+
         default:
             std::cerr << "An action was executed that isn't defined, removing it from the queue \n";
             this->animation_actions.pop();
@@ -76,22 +87,43 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
         }
 
         case animation::AnimationState::OnGoing:
-            this->position_x = reponse.position_x;
-            this->position_y = reponse.position_y;
-            return;
+
+            if (upcoming_action.type == AnimationActionType::LinearPositionMovement)
+            {
+                this->position_x = reponse.position_x;
+                this->position_y = reponse.position_y;
+                return;
+            }
+
+            if (upcoming_action.type == AnimationActionType::LinearSizeChange)
+            {
+                this->size = reponse.size;
+                return;
+            }
 
         case animation::AnimationState::Finished:
-            this->position_x = reponse.position_x;
-            this->position_y = reponse.position_y;
-            this->animation_actions.pop();
-            return;
+
+            if (upcoming_action.type == AnimationActionType::LinearPositionMovement)
+            {
+                this->position_x = reponse.position_x;
+                this->position_y = reponse.position_y;
+                this->animation_actions.pop();
+                return;
+            }
+
+            if (upcoming_action.type == AnimationActionType::LinearSizeChange)
+            {
+                this->size = reponse.size;
+                this->animation_actions.pop();
+                return;
+            }
 
         default:
             break;
     }
 }
 
-void anim::AnimatedTextObject::update_position_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position)
+void anim::AnimatedTextObject::add_position_move_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position)
 {
     if ( this->stop_time.has_value() )
     {
@@ -113,7 +145,7 @@ void anim::AnimatedTextObject::update_position_after(const float& new_position_x
     this->animation_actions.push(new_action);
 }
 
-void anim::AnimatedTextObject::move_position_linearly_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration)
+void anim::AnimatedTextObject::add_position_move_linearly_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration)
 {
     if ( this->stop_time.has_value() )
     {
@@ -134,3 +166,47 @@ void anim::AnimatedTextObject::move_position_linearly_after(const float& new_pos
 
     this->animation_actions.push(new_action);
 }
+
+void anim::AnimatedTextObject::add_size_change_after(const float& new_size, const float& time_to_update_position)
+{
+    if ( this->stop_time.has_value() )
+    {
+        if (this->start_time + time_to_update_position >= this->stop_time)
+        {
+            std::cerr << "Attempted to add an animation action that is not possible in the objects display time \n";
+            return;
+        }
+    }
+
+    AnimationAction new_action;
+    new_action.state = AnimationActionState::Inactive;
+    new_action.type = AnimationActionType::SizeChange;
+    new_action.execution_time = this->start_time + time_to_update_position;
+    new_action.duration = std::nullopt;
+    new_action.size_new = new_size;
+
+    this->animation_actions.push(new_action);
+}
+
+void anim::AnimatedTextObject::add_size_change_after(const float& new_size, const float& time_to_update_position, const float& duration)
+{
+    if ( this->stop_time.has_value() )
+    {
+        if (this->start_time + time_to_update_position >= this->stop_time)
+        {
+            std::cerr << "Attempted to add an animation action that is not possible in the objects display time \n";
+            return;
+        }
+    }
+
+    AnimationAction new_action;
+    new_action.state = AnimationActionState::Inactive;
+    new_action.type = AnimationActionType::LinearSizeChange;
+    new_action.execution_time = this->start_time + time_to_update_position;
+    new_action.duration = duration;
+    new_action.size_new = new_size;
+
+    this->animation_actions.push(new_action);
+}
+
+

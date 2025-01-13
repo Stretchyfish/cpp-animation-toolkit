@@ -16,6 +16,7 @@ anim::AnimationObject::AnimationObject(const int& position_x, const int& positio
     this->position_z = 0;
     this->start_time = 0;
     this->stop_time = std::nullopt;
+    this->size = 20;
 }
 
 void anim::AnimationObject::set_start_time(const float& new_start_time)

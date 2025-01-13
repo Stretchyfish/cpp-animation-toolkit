@@ -1,4 +1,4 @@
-
+#pragma once
 
 namespace anim
 {
@@ -16,6 +16,7 @@ namespace anim
         {
             float position_x;
             float position_y;
+            float size;
             AnimationState state;
         };
     }
