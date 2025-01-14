@@ -14,18 +14,17 @@ namespace rl
 
 namespace anim
 {
-    class AnimatedTextObject : public AnimationObject
+    class AnimatedSquareObject : public AnimationObject
     {
         public:
-            AnimatedTextObject();
-            AnimatedTextObject(std::string text, int position_x, int position_y);
+            AnimatedSquareObject();
+            AnimatedSquareObject(float size, float position_x, float position_y);
 
             void draw_object(const float& current_time);
 
-            std::string text;
-
         private:
-
             void draw_animation_actions(const float& current_time);
+
+
     };
 };

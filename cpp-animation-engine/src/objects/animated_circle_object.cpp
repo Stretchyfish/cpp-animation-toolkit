@@ -1,16 +1,16 @@
-#include "animation_engine/objects/animated_text_object.h"
+#include "animation_engine/objects/animated_circle_object.h"
 
-anim::AnimatedTextObject::AnimatedTextObject() : AnimationObject()
+anim::AnimatedCircleObject::AnimatedCircleObject() : AnimationObject()
 {
 
 }
 
-anim::AnimatedTextObject::AnimatedTextObject(std::string text, int position_x, int position_y) : AnimationObject(position_x, position_y)
+anim::AnimatedCircleObject::AnimatedCircleObject(float size, float position_x, float position_y) : AnimationObject(position_x, position_y)
 {
-    this->text = text;
+    this->size = size;
 }
 
-void anim::AnimatedTextObject::draw_object(const float& current_time)
+void anim::AnimatedCircleObject::draw_object(const float& current_time)
 {
     if (this->start_time > current_time)
     {
@@ -25,17 +25,21 @@ void anim::AnimatedTextObject::draw_object(const float& current_time)
         }
     }
 
-    this->draw_animation_actions(current_time);
-
-    rl::Font default_font = rl::GetFontDefault();
-    rl::Vector2 text_size = rl::MeasureTextEx(default_font, this->text.c_str(), this->size, 0);
+    //this->draw_animation_actions(current_time);
+//
+    //rl::Font default_font = rl::GetFontDefault();
+    //rl::Vector2 text_size = rl::MeasureTextEx(default_font, this->text.c_str(), this->size, 0);
 
     //rl::Vector2 text_size = rl::MeasureText(this->text.c_str(), this->size);
 
-    rl::DrawText(this->text.c_str(), this->position_x - text_size.x / 2, this->position_y - text_size.y / 2, this->size, rl::WHITE);
+    //rl::Vector3 position { this->position_x, this->position_y, this->position_z };
+
+    this->draw_animation_actions(current_time);
+
+    rl::DrawCircle(this->position_x, this->position_y, this->size, rl::RED);
 }
 
-void anim::AnimatedTextObject::draw_animation_actions(const float& current_time) // @TODO, consider a better name than trigger
+void anim::AnimatedCircleObject::draw_animation_actions(const float& current_time)
 {
     if (this->animation_actions.size() == 0)
     {
@@ -80,7 +84,6 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
             this->animation_actions.pop();
             return;
     }
-
 
     switch(reponse.state)
     {
@@ -127,3 +130,4 @@ void anim::AnimatedTextObject::draw_animation_actions(const float& current_time)
             break;
     }
 }
+

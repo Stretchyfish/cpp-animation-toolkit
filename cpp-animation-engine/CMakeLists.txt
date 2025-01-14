@@ -10,6 +10,7 @@ set(engine_header_files
     include/animation_engine/animation_engine.h
     include/animation_engine/objects/animation_object.h
     include/animation_engine/objects/animated_text_object.h
+    include/animation_engine/objects/animated_circle_object.h
     include/animation_engine/animations/animation_movement.h
     include/animation_engine/animations/animation_size.h
 )
@@ -18,10 +19,10 @@ set(engine_source_files
     src/animation_engine.cpp
     src/animation_object.cpp
     src/animated_text_object.cpp
+    src/objects/animated_circle_object.cpp
     src/animations/animation_movement.cpp
     src/animations/animation_size.cpp
 )
-
 
 add_library(cpp-animation-engine ${engine_source_files} ${engine_header_files})
 
@@ -31,4 +32,3 @@ target_link_libraries(cpp-animation-engine PUBLIC raylib)
 target_include_directories(cpp-animation-engine PUBLIC raylib/include)
 
 file(COPY ${engine_header_files} DESTINATION "include")
-file(COPY resources/fonts DESTINATION "resources")

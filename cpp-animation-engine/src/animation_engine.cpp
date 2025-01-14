@@ -19,6 +19,17 @@ void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedTextObje
     this->animated_text_objects.push_back(animated_text_object);
 }
 
+void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedCircleObject& animated_circle_object)
+{
+    this->animated_circle_objects.push_back(animated_circle_object);
+}
+
+//void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedSquareObject& animated_square_object)
+//{
+//    this->animated_square_objects.push_back(animated_square_object);
+//}
+
+
 void anim::AnimationEngine::start_animation()
 {
     rl::InitWindow(this->screen_width, this->screen_height, this->title.c_str());
@@ -51,8 +62,17 @@ void anim::AnimationEngine::start_animation()
         for (AnimatedTextObject& text_object : this->animated_text_objects)
         {
             text_object.draw_object(this->time);
-
         }
+
+        for (AnimatedCircleObject& circle_object : this->animated_circle_objects)
+        {
+            circle_object.draw_object(this->time);
+        }
+
+        //for (AnimatedSquareObject& square_object : this->animated_square_objects)
+        //{
+        //    square_object.draw_object(this->time);
+        //}
 
         rl::DrawText("Animation window", 190, 200, 20, rl::WHITE);
 

@@ -28,8 +28,10 @@ namespace anim
             float position_z;
             float size;
 
-            float position_before_an_action_x;
-            float position_before_an_action_y;
+            void add_position_move_instant_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position);
+            void add_position_move_linear_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration);
+            void add_size_change_instant_after(const float& new_size, const float& time_to_update_position);
+            void add_size_change_linear_after(const float& new_size, const float& time_to_update_position, const float& duration);
 
         protected:
             virtual void draw_animation_actions(const float& current_time);
