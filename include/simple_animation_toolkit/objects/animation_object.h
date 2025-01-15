@@ -5,7 +5,7 @@
 #include <vector>
 #include <queue>
 
-#include "animation_engine/actions/animation_action.h"
+#include "simple_animation_toolkit/actions/animation_action.h"
 
 namespace anim
 {

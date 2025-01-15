@@ -1,9 +1,9 @@
 #pragma once
 
-#include "animation_engine/actions/animation_action.h"
-#include "animation_engine/math/lerp.hpp"
-#include "animation_engine/math/position.hpp"
-#include "animation_engine/animations/animation_response.hpp"
+#include "simple_animation_toolkit/actions/animation_action.h"
+#include "simple_animation_toolkit/math/lerp.hpp"
+#include "simple_animation_toolkit/math/position.hpp"
+#include "simple_animation_toolkit/animations/animation_response.hpp"
 
 namespace anim
 {

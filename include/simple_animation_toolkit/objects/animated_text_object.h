@@ -3,9 +3,9 @@
 #include "animation_object.h"
 #include <string>
 #include <optional>
-#include "animation_engine/math/lerp.hpp"
-#include "animation_engine/animations/animation_movement.h"
-#include "animation_engine/animations/animation_size.h"
+#include "simple_animation_toolkit/math/lerp.hpp"
+#include "simple_animation_toolkit/animations/animation_movement.h"
+#include "simple_animation_toolkit/animations/animation_size.h"
 
 namespace rl
 {

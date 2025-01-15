@@ -1,4 +1,4 @@
-#include "animation_engine/objects/animated_text_object.h"
+#include "simple_animation_toolkit/objects/animated_text_object.h"
 
 anim::AnimatedTextObject::AnimatedTextObject() : AnimationObject()
 {

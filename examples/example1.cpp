@@ -1,5 +1,5 @@
 #include <iostream>
-#include "animation_engine/animation_engine.h"
+#include "simple_animation_toolkit/animation_engine.h"
 //#include "animation_engine/objects/animated_text_object.h"
 //#include "animation_engine/objects/animated_circle_object.h"
 //#include "animation_engine/objects/animated_square_object.h"

@@ -1,4 +1,4 @@
-#include "animation_engine/objects/animated_square_object.h"
+#include "simple_animation_toolkit/objects/animated_square_object.h"
 
 anim::AnimatedSquareObject::AnimatedSquareObject() : AnimationObject()
 {

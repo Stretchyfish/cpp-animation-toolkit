@@ -4,10 +4,10 @@
 #include <vector>
 #include <memory>
 #include <utility>
-#include "animation_engine/objects/animation_object.h"
-#include "objects/animated_text_object.h"
-#include "objects/animated_circle_object.h"
-#include "objects/animated_square_object.h"
+#include "simple_animation_toolkit/objects/animation_object.h"
+#include "simple_animation_toolkit/objects/animated_text_object.h"
+#include "simple_animation_toolkit/objects/animated_circle_object.h"
+#include "simple_animation_toolkit/objects/animated_square_object.h"
 #include <unistd.h>
 
 namespace rl
