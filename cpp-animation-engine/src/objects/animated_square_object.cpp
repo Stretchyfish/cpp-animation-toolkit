@@ -36,7 +36,7 @@ void anim::AnimatedSquareObject::draw_object(const float& current_time)
 
     this->draw_animation_actions(current_time);
 
-    rl::DrawRectangle(rl::Rectangle {this->position_x, this->position_y, this->size, this->size}, rl::BLUE);
+    rl::DrawRectangle(this->position_x, this->position_y, this->size, this->size, rl::BLUE);
 }
 
 void anim::AnimatedSquareObject::draw_animation_actions(const float& current_time)

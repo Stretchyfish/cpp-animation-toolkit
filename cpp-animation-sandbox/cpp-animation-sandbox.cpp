@@ -21,6 +21,12 @@ int main()
     //circle1.add_position_move_linear_after(200, 200, 1, 5);
     circle1.add_size_change_linear_after(100, 1, 3);
 
+    anim::AnimatedSquareObject square1(50, 500, 200);
+    square1.start_time = 1;
+    square1.stop_time = 20;
+
+    square1.add_position_move_linear_after(100, 100, 2, 4);
+
     //anim::AnimatedSquareObject square1(50, 100, 200);
 
     //text1.add_position_move_after(300, 300, 1);
@@ -32,6 +38,7 @@ int main()
 
     animation_engine.add_object_to_animation(text1);
     animation_engine.add_object_to_animation(circle1);
+    animation_engine.add_object_to_animation(square1);
 
     animation_engine.start_animation();
 }

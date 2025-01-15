@@ -24,8 +24,8 @@ namespace anim
             AnimationEngine(const std::string& title, const int& screen_width, const int& screen_height);
 
             void add_object_to_animation(const AnimatedTextObject& animated_text_object);
-            void add_object_to_animation(const anim::AnimatedCircleObject& animated_circle_object);
-            //void add_object_to_animation(const anim::AnimatedSquareObject& animated_square_object);
+            void add_object_to_animation(const AnimatedCircleObject& animated_circle_object);
+            void add_object_to_animation(const AnimatedSquareObject& animated_square_object);
 
             void start_animation();
 
@@ -40,6 +40,6 @@ namespace anim
 
             std::vector<AnimatedTextObject> animated_text_objects;
             std::vector<AnimatedCircleObject> animated_circle_objects;
-            //std::vector<AnimatedSquareObject> animated_square_objects;
+            std::vector<AnimatedSquareObject> animated_square_objects;
     };
 }

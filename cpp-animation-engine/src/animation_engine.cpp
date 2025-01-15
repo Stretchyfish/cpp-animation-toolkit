@@ -24,10 +24,10 @@ void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedCircleOb
     this->animated_circle_objects.push_back(animated_circle_object);
 }
 
-//void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedSquareObject& animated_square_object)
-//{
-//    this->animated_square_objects.push_back(animated_square_object);
-//}
+void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedSquareObject& animated_square_object)
+{
+    this->animated_square_objects.push_back(animated_square_object);
+}
 
 
 void anim::AnimationEngine::start_animation()
@@ -69,10 +69,10 @@ void anim::AnimationEngine::start_animation()
             circle_object.draw_object(this->time);
         }
 
-        //for (AnimatedSquareObject& square_object : this->animated_square_objects)
-        //{
-        //    square_object.draw_object(this->time);
-        //}
+        for (AnimatedSquareObject& square_object : this->animated_square_objects)
+        {
+            square_object.draw_object(this->time);
+        }
 
         rl::DrawText("Animation window", 190, 200, 20, rl::WHITE);
 
