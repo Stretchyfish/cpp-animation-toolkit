@@ -17,7 +17,7 @@ set(toolkit_header_files
 )
 
 set(toolkit_header_files_to_output
-    include/simple_animation_toolkit/animation_engine.h
+    include/simple_animation_toolkit.h
 )
 
 set(toolkit_source_files
