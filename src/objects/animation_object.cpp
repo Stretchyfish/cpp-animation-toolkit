@@ -1,6 +1,6 @@
 #include "simple_animation_toolkit/objects/animation_object.h"
 
-anim::AnimationObject::AnimationObject()
+sat::AnimationObject::AnimationObject()
 {
     this->position_x = 0;
     this->position_y = 0;
@@ -9,7 +9,7 @@ anim::AnimationObject::AnimationObject()
     this->stop_time = std::nullopt;
 }
 
-anim::AnimationObject::AnimationObject(const int& position_x, const int& position_y)
+sat::AnimationObject::AnimationObject(const int& position_x, const int& position_y)
 {
     this->position_x = position_x;
     this->position_y = position_y;
@@ -19,27 +19,27 @@ anim::AnimationObject::AnimationObject(const int& position_x, const int& positio
     this->size = 20;
 }
 
-void anim::AnimationObject::set_start_time(const float& new_start_time)
+void sat::AnimationObject::set_start_time(const float& new_start_time)
 {
     this->start_time = new_start_time;
 }
 
-void anim::AnimationObject::set_stop_time(const float& new_stop_time)
+void sat::AnimationObject::set_stop_time(const float& new_stop_time)
 {
     this->stop_time = new_stop_time;
 }
 
-void anim::AnimationObject::draw_object(const float& current_time)
+void sat::AnimationObject::draw_object(const float& current_time)
 {
     std::cerr << "Drawing was not defined for the object that is being drawn \n";
 }
 
-void anim::AnimationObject::draw_animation_actions(const float& current_time)
+void sat::AnimationObject::draw_animation_actions(const float& current_time)
 {
     std::cerr << "Triger animation action was not defined for the object it is being called in \n";
 }
 
-void anim::AnimationObject::add_position_move_instant_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position)
+void sat::AnimationObject::add_position_move_instant_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position)
 {
     if ( this->stop_time.has_value() )
     {
@@ -61,7 +61,7 @@ void anim::AnimationObject::add_position_move_instant_after(const float& new_pos
     this->animation_actions.push(new_action);
 }
 
-void anim::AnimationObject::add_position_move_linear_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration)
+void sat::AnimationObject::add_position_move_linear_after(const float& new_position_x, const float& new_position_y, const float& time_to_update_position, const float& duration)
 {
     if ( this->stop_time.has_value() )
     {
@@ -83,7 +83,7 @@ void anim::AnimationObject::add_position_move_linear_after(const float& new_posi
     this->animation_actions.push(new_action);
 }
 
-void anim::AnimationObject::add_size_change_instant_after(const float& new_size, const float& time_to_update_position)
+void sat::AnimationObject::add_size_change_instant_after(const float& new_size, const float& time_to_update_position)
 {
     if ( this->stop_time.has_value() )
     {
@@ -104,7 +104,7 @@ void anim::AnimationObject::add_size_change_instant_after(const float& new_size,
     this->animation_actions.push(new_action);
 }
 
-void anim::AnimationObject::add_size_change_linear_after(const float& new_size, const float& time_to_update_position, const float& duration)
+void sat::AnimationObject::add_size_change_linear_after(const float& new_size, const float& time_to_update_position, const float& duration)
 {
     if ( this->stop_time.has_value() )
     {

@@ -1,16 +1,16 @@
 #include "simple_animation_toolkit/objects/animated_square_object.h"
 
-anim::AnimatedSquareObject::AnimatedSquareObject() : AnimationObject()
+sat::AnimatedSquareObject::AnimatedSquareObject() : AnimationObject()
 {
 
 }
 
-anim::AnimatedSquareObject::AnimatedSquareObject(float size, float position_x, float position_y) : AnimationObject(position_x, position_y)
+sat::AnimatedSquareObject::AnimatedSquareObject(float size, float position_x, float position_y) : AnimationObject(position_x, position_y)
 {
     this->size = size;
 }
 
-void anim::AnimatedSquareObject::draw_object(const float& current_time)
+void sat::AnimatedSquareObject::draw_object(const float& current_time)
 {
     if (this->start_time > current_time)
     {
@@ -39,7 +39,7 @@ void anim::AnimatedSquareObject::draw_object(const float& current_time)
     rl::DrawRectangle(this->position_x, this->position_y, this->size, this->size, rl::BLUE);
 }
 
-void anim::AnimatedSquareObject::draw_animation_actions(const float& current_time)
+void sat::AnimatedSquareObject::draw_animation_actions(const float& current_time)
 {
     if (this->animation_actions.size() == 0)
     {

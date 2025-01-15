@@ -1,36 +1,36 @@
 #include "simple_animation_toolkit/animation_engine.h"
 
-anim::AnimationEngine::AnimationEngine()
+sat::AnimationEngine::AnimationEngine()
 {
     this->title = "Example title";
     this->screen_width = 400;
     this->screen_height = 400;
 }
 
-anim::AnimationEngine::AnimationEngine(const std::string& title, const int& screen_width, const int& screen_height)
+sat::AnimationEngine::AnimationEngine(const std::string& title, const int& screen_width, const int& screen_height)
 {
     this->title = title;
     this->screen_width = screen_width;
     this->screen_height = screen_height;
 }
 
-void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedTextObject& animated_text_object)
+void sat::AnimationEngine::add_object_to_animation(const sat::AnimatedTextObject& animated_text_object)
 {
     this->animated_text_objects.push_back(animated_text_object);
 }
 
-void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedCircleObject& animated_circle_object)
+void sat::AnimationEngine::add_object_to_animation(const sat::AnimatedCircleObject& animated_circle_object)
 {
     this->animated_circle_objects.push_back(animated_circle_object);
 }
 
-void anim::AnimationEngine::add_object_to_animation(const anim::AnimatedSquareObject& animated_square_object)
+void sat::AnimationEngine::add_object_to_animation(const sat::AnimatedSquareObject& animated_square_object)
 {
     this->animated_square_objects.push_back(animated_square_object);
 }
 
 
-void anim::AnimationEngine::start_animation()
+void sat::AnimationEngine::start_animation()
 {
     rl::InitWindow(this->screen_width, this->screen_height, this->title.c_str());
     rl::SetTargetFPS(60);

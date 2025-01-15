@@ -5,7 +5,7 @@
 #include "simple_animation_toolkit/math/position.hpp"
 #include "simple_animation_toolkit/animations/animation_response.hpp"
 
-namespace anim
+namespace sat
 {
     namespace animation
     {

@@ -6,22 +6,22 @@
 
 int main()
 {
-    anim::AnimationEngine animation_engine("Simple animation", 800, 800);
+    sat::AnimationEngine animation_engine("Simple animation", 800, 800);
 
-    anim::AnimatedTextObject text1("text", 400, 400);
+    sat::AnimatedTextObject text1("text", 400, 400);
     text1.start_time = 2;
     text1.stop_time = 10;
 
     text1.add_size_change_linear_after(50, 3, 7);
 
-    anim::AnimatedCircleObject circle1(50, 0, 0);
+    sat::AnimatedCircleObject circle1(50, 0, 0);
     circle1.start_time = 3;
     circle1.stop_time = 7;
     //circle1.add_position_move_instant_after(200, 200, 1);
     //circle1.add_position_move_linear_after(200, 200, 1, 5);
     circle1.add_size_change_linear_after(100, 1, 3);
 
-    anim::AnimatedSquareObject square1(50, 500, 200);
+    sat::AnimatedSquareObject square1(50, 500, 200);
     square1.start_time = 1;
     square1.stop_time = 20;
 

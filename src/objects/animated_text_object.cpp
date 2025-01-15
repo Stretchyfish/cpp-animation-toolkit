@@ -1,16 +1,16 @@
 #include "simple_animation_toolkit/objects/animated_text_object.h"
 
-anim::AnimatedTextObject::AnimatedTextObject() : AnimationObject()
+sat::AnimatedTextObject::AnimatedTextObject() : AnimationObject()
 {
 
 }
 
-anim::AnimatedTextObject::AnimatedTextObject(std::string text, int position_x, int position_y) : AnimationObject(position_x, position_y)
+sat::AnimatedTextObject::AnimatedTextObject(std::string text, int position_x, int position_y) : AnimationObject(position_x, position_y)
 {
     this->text = text;
 }
 
-void anim::AnimatedTextObject::draw_object(const float& current_time)
+void sat::AnimatedTextObject::draw_object(const float& current_time)
 {
     if (this->start_time > current_time)
     {
@@ -35,7 +35,7 @@ void anim::AnimatedTextObject::draw_object(const float& current_time)
     rl::DrawText(this->text.c_str(), this->position_x - text_size.x / 2, this->position_y - text_size.y / 2, this->size, rl::WHITE);
 }
 
-void anim::AnimatedTextObject::draw_animation_actions(const float& current_time) // @TODO, consider a better name than trigger
+void sat::AnimatedTextObject::draw_animation_actions(const float& current_time) // @TODO, consider a better name than trigger
 {
     if (this->animation_actions.size() == 0)
     {

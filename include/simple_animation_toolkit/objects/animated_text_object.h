@@ -12,7 +12,7 @@ namespace rl
     #include <raylib.h>
 }
 
-namespace anim
+namespace sat
 {
     class AnimatedTextObject : public AnimationObject
     {

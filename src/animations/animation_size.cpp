@@ -1,6 +1,6 @@
 #include "simple_animation_toolkit/animations/animation_size.h"
 
-namespace anim
+namespace sat
 {
     namespace animation
     {

@@ -15,7 +15,7 @@ namespace rl
     #include <raylib.h>
 }
 
-namespace anim
+namespace sat // namespace simple animation toolkit (sat)
 {
     class AnimationEngine
     {

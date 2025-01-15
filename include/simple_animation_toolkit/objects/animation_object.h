@@ -7,7 +7,7 @@
 
 #include "simple_animation_toolkit/actions/animation_action.h"
 
-namespace anim
+namespace sat
 {
     class AnimationObject
     {

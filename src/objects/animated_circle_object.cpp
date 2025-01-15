@@ -1,16 +1,16 @@
 #include "simple_animation_toolkit/objects/animated_circle_object.h"
 
-anim::AnimatedCircleObject::AnimatedCircleObject() : AnimationObject()
+sat::AnimatedCircleObject::AnimatedCircleObject() : AnimationObject()
 {
 
 }
 
-anim::AnimatedCircleObject::AnimatedCircleObject(float size, float position_x, float position_y) : AnimationObject(position_x, position_y)
+sat::AnimatedCircleObject::AnimatedCircleObject(float size, float position_x, float position_y) : AnimationObject(position_x, position_y)
 {
     this->size = size;
 }
 
-void anim::AnimatedCircleObject::draw_object(const float& current_time)
+void sat::AnimatedCircleObject::draw_object(const float& current_time)
 {
     if (this->start_time > current_time)
     {
@@ -39,7 +39,7 @@ void anim::AnimatedCircleObject::draw_object(const float& current_time)
     rl::DrawCircle(this->position_x, this->position_y, this->size, rl::RED);
 }
 
-void anim::AnimatedCircleObject::draw_animation_actions(const float& current_time)
+void sat::AnimatedCircleObject::draw_animation_actions(const float& current_time)
 {
     if (this->animation_actions.size() == 0)
     {

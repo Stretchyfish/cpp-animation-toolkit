@@ -1,6 +1,6 @@
 #pragma once
 
-namespace anim
+namespace sat
 {
     namespace animation
     {

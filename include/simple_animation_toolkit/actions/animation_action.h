@@ -3,7 +3,7 @@
 #include <iostream>
 #include <optional>
 
-namespace anim
+namespace sat
 {
     enum AnimationActionType
     {

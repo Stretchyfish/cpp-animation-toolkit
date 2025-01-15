@@ -1,6 +1,6 @@
 #include "simple_animation_toolkit/animations/animation_movement.h"
 
-namespace anim
+namespace sat
 {
     namespace animation
     {
